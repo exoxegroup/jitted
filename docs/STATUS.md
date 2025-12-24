@@ -21,6 +21,10 @@ Phase 6 (Publication) is complete. We are in the final phase of polishing, testi
 - [ ] Final End-to-End Manual Testing.
 - [ ] Deployment to Production.
 
+## Deployment Note
+- **Database**: External PostgreSQL configured (Render Managed DB removed from blueprint).
+- **Credentials**: See `docs/DEPLOYMENT.md` for production connection string.
+
 ## Blockers
 - None.
 
