@@ -15,33 +15,36 @@
 - [x] Dashboard Shell
 
 ## Phase 3: Submission
-- [x] DB Schema (Submissions) - *Completed 2025-12-24*
-- [x] File Upload Logic (Local/MVP) - *Completed 2025-12-24*
-- [x] Submission Form (Wizard) - *Completed 2025-12-24*
-- [x] Author Dashboard (My Submissions) - *Completed 2025-12-24*
+- [x] DB Schema (Submissions)
+- [x] File Upload Logic (Local/MVP)
+- [x] Submission Form (Wizard)
+- [x] Author Dashboard (My Submissions)
 
 ## Phase 4: Editorial
-- [x] Editor Dashboard (Submission List) - *Completed 2025-12-24*
-- [x] Submission Detail View - *Completed 2025-12-24*
-- [x] Vetting Actions (Accept/Reject) - *Completed 2025-12-24*
-- [x] Review Assignment Logic - *Completed 2025-12-24*
-- [x] Decision Logic (Final Accept/Reject after review) - *Completed 2025-12-24*
+- [x] Editor Dashboard (Submission List)
+- [x] Submission Detail View
+- [x] Vetting Actions (Accept/Reject)
+- [x] Review Assignment Logic
+- [x] Decision Logic (Final Accept/Reject after review)
 
 ## Phase 5: Review
-- [x] Reviewer Portal (Dashboard) - *Completed 2025-12-24*
-- [x] Evaluation Forms - *Completed 2025-12-24*
-- [x] Decision Logic (Recommendation) - *Completed 2025-12-24*
+- [x] Reviewer Portal (Dashboard)
+- [x] Evaluation Forms
+- [x] Decision Logic (Recommendation)
 
 ## Phase 6: Publication
-- [x] Issue Management - *Completed 2025-12-24*
-- [x] Archives Frontend - *Completed 2025-12-24*
-- [x] PDF Viewer Integration (Download Link) - *Completed 2025-12-24*
-- [x] Search Functionality - *Completed 2025-12-24*
+- [x] Issue Management
+- [x] Archives Frontend
+- [x] PDF Viewer Integration (Download Link)
+- [x] Search Functionality
+- [x] Manual Publication Workflow (Basic)
+- [x] Manual Publication Workflow (Enhanced Metadata) - *Completed 2025-12-24*
 
 ## Phase 7: Polish & Launch
-- [x] Email Notifications (Priority) - *Completed 2025-12-24*
-- [x] UI/UX Polish - *Completed 2025-12-24*
-- [x] Security Audit - *Completed 2025-12-24*
-- [x] Documentation (User Manual for Editors) - *Completed 2025-12-24*
-- [x] Deployment Configuration (External DB) - *Completed 2025-12-24*
-- [ ] Final Deployment Verification
+- [x] Email Notifications
+- [x] UI/UX Polish
+- [x] Security Audit
+- [x] Documentation (User Manual)
+- [x] Deployment Configuration
+- [x] Disable Public Registration
+- [ ] Final Production Verification

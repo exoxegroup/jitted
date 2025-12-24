@@ -4,32 +4,31 @@
 **Date**: 2025-12-24
 
 ## Overview
-Phase 6 (Publication) is complete. We are in the final phase of polishing, testing, and preparing for deployment. The application build has been fixed and verified locally.
+The application is in the final verification stage. We have successfully implemented the **Admin-only Manual Publication Workflow** with enhanced metadata support, integrated **Cloudinary** for reliable file storage, and fixed the **Archives** display for manual collections.
+
+**Key Updates (2025-12-24)**:
+- **Archives Display**: Manual submissions now appear in the Archives page under "Collections".
+- **Cloudinary Integration**: Migrated from local storage to Cloudinary for file uploads.
+- **Manual Upload Enhanced**: Added detailed fields for Issue (manual text), References (bullets), Other Authors (dynamic list), and Keywords (bullets).
+- **Validation Refined**: "Issue Details" field now accepts 5-200 characters.
+- **Error Handling**: Improved UI feedback for upload failures.
 
 ## Completed Tasks
 ### Phase 1-6
-- [x] All core functionalities (Auth, Submission, Review, Publication, Archives).
+- [x] All core functionalities.
 
 ### Phase 7 (Polish & Launch)
-- [x] Email Notifications.
-- [x] UI/UX Polish (Toast notifications, Error handling).
-- [x] Security Audit (Input validation, RBAC checks).
-- [x] User Manual.
-- [x] Build Verification (Fixed Typescript and Prerendering errors).
+- [x] Cloudinary Integration (File Storage).
+- [x] Admin-Only Mode (Registration Disabled).
+- [x] Manual Publication Workflow (Enhanced).
+- [x] Dashboard Quick Actions.
+- [x] Archives Page Update (Support for Manual Collections).
 
 ## Active Tasks
-- [ ] Final End-to-End Manual Testing.
-- [ ] Deployment to Production.
-
-## Deployment Note
-- **Database**: External PostgreSQL configured (Render Managed DB removed from blueprint).
-- **Credentials**: See `docs/DEPLOYMENT.md` for production connection string.
-
-## Blockers
-- None.
+- [ ] Final End-to-End Verification of Manual Uploads.
+- [ ] Production Deployment (Fixing Seed Configuration).
 
 ## Security Notes
-- **Input Validation**: All forms use Zod for validation.
-- **Authentication**: NextAuth handles session security.
-- **RBAC**: Middleware and server-side checks ensure role-based access.
-- **CSRF**: Next.js built-in protection.
+- **Storage**: Files are stored securely in Cloudinary.
+- **Input Validation**: `manual-upload.ts` strictly validates all new fields (Zod).
+- **Access Control**: Manual upload strictly limited to `ADMIN` and `EDITOR` roles.
