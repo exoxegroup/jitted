@@ -26,7 +26,7 @@ Fill in the following fields carefully. The **Root Directory** is critical becau
 | **Branch** | `main` | Or whichever branch you want to deploy. |
 | **Root Directory** | `web` | **IMPORTANT**: Do not leave this blank. |
 | **Runtime** | `Node` | |
-| **Build Command** | `npm install && npx prisma generate && npm run build` | Installs deps, generates Prisma client, and builds the app. |
+| **Build Command** | `npm install && npx prisma generate && npx prisma migrate deploy && npm run build` | Installs deps, generates Prisma client, **migrates DB**, and builds the app. |
 | **Start Command** | `npm start` | Starts the Next.js production server. |
 | **Instance Type** | `Free` (or appropriate plan) | |
 

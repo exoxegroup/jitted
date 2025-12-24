@@ -46,6 +46,7 @@ export async function POST(req: Request) {
       { status: 201 }
     );
   } catch (error) {
+    console.error("Registration error:", error);
     if (error instanceof ZodError) {
         return NextResponse.json({ message: "Invalid data", errors: error.issues }, { status: 400 });
     }
