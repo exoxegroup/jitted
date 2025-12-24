@@ -1,0 +1,66 @@
+JOURNAL OF ISSUES IN TECHNICAL TEACHER EDUCATION (JITTED)
+Vol. 3 No. 1 | January - April, 2024 ISSN: 2971-608X
+
+Location: Federal College of Education (Technical), P.M.B. 1013, Potiskum, Yobe State, Nigeria.
+
+Copyright & Credits
+© 2024 Journal of Issues in Technical Teacher Education (JITTED).
+
+All rights reserved. No part of this journal may be reproduced, stored in a retrieval system, or transmitted in any form without prior permission.
+
+Sponsorship: Printed in Nigeria with support from the Tertiary Education Trust Fund (TETFund).
+
+Foreword
+This volume focuses on Revitalizing Education for Sustainable Development amidst Security, Economy, and Health Challenges in Nigerian Education. It explores critical intersections of skill acquisition, ICT, Agricultural Education, and innovative teaching methods in Science and Technology.
+
+"I recommend this volume to students, researchers, and staff for its invaluable contributions towards the development of Technology Teacher Education globally."
+
+— Dr. Mursali Mohammed Jaji, Editor-in-Chief
+
+Editorial Board & Committee
+Name,Role,Affiliation,Contact
+Dr. Mursali Mohammed Jaji,Editor-in-Chief,FCE(T) Potiskum,+2347035165583
+Prof. Abubakar Sadiq Bappah,Editor,"ATBU, Bauchi",+2348030462741
+Prof. James Ngada,Editor,Yobe State University,+2348066473727
+Prof. E.V. Mbaga,Editor,Modibbo Adama University,+2348035134769
+Prof. Paul S. Yaduma,Editor,"ATBU, Bauchi",+2348038948041
+Prof. Ali A. Ali,Editor,Fed. Univ. Agriculture Makurdi,+2347066883792
+Dr. Abdulkadir A. Olatunji,Secretary,FCE(T) Potiskum,+2348162872840
+
+Authors’ Guidelines
+Scope: Scholarly articles in Sciences, Vocational, and Technology Teacher Education.
+
+Length: Max 12 pages (foolscap) or 15 pages (A4), including references.
+
+Format: 1.5 line spacing, 12pt Times New Roman.
+
+Abstract: Max 250 words on a separate sheet.
+
+Submission: One (1) copy via CD-ROM or email to jjttedfce@gmail.com.
+
+Fees: Assessment fee of ₦5,000.
+
+Website: www.jitted.com
+
+Table of Contents
+Page,Article Title,Author(s)
+1,The Use of Mobile Phones in Educational Processes: Health Implications,Shitu Teslim
+10,Incorporating Multiple Intelligence Methods to Drive Effective Education Reform,Ari Idi
+20,Problems and Prospects of School Records in Senior Secondary Schools,Popoola O. B. & Duchi A. K.
+30,Assessment Challenges in Large Classes in Developing Countries,Bindowo M. G. et al.
+34,Psychological Needs of Undergraduate Adult Education Students,Fatsuma Abubakar Ajeje
+44,Transformative Impact of AI on Science Education in Nigeria,Dr. Yusuf U. Jomos et al.
+55,Impact of Instructional Materials in Teaching Business Studies,Joseph Olorunmolu Oye
+66,Innovative Approach in Financing Higher Education Research,Usman Umar Dukku et al.
+76,ICT in Theatrical Play Performance in Bauchi State,Haruna Musa et al.
+84,Adverse Childhood Behaviour and Parenting Styles on Deviants,Balogun M. O. & Voke L. A.
+94,The Bane of Public Education in Nigeria: Policies to the Rescue,Adeyemo Fatimoh M. A.
+104,Machine Learning Technique in Student’s Organizational Behavior,Abdu Ibrahim Adamu
+113,Occupational Status and Study Habit Among Pre-Service Teachers,Shehu Mansur et al.
+121,Impact of Psychological Variables on Academic Achievement (WASSCE),Muhammad M. Yunusa et al.
+129,Effects of Job Burnout Among Secondary School Teachers,Rilwanu M. L. & Hauwa Y. B.
+136,Social Cognitive Theory on Restructuring School Behaviour,Zuwaira A. Alkali & Salisu I.
+143,Effect of ICT in Technical/Science Schools in Yobe State,Ozoani C. O. et al.
+152,Integrating E-Learning in Nigerian Tertiary Institutions,Yinusa A. Yinka et al.
+161,Drug Abuse Implications Among Students in Zamfara State,Dr. Ibrahim M. Yabo et al.
+169,Sociology of Higher Education: Challenges and Contexts,Dr. Ibrahim Muhammad Yabo
