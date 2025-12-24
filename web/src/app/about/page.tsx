@@ -3,23 +3,90 @@ import { User } from "lucide-react";
 
 export default function AboutPage() {
   const editorialBoard = [
-    { name: "Dr. Mursali Mohammed Jaji", role: "Chairman: Editor-in-Chief", affiliation: "FCE(T) Potiskum" },
-    { name: "Prof. Abubakar Sadiq Bappah", role: "Editor", affiliation: "ATBU, Bauchi" },
-    { name: "Prof. James Ngada", role: "Editor", affiliation: "Yobe State University" },
-    { name: "Prof. E.V. Mbaga", role: "Editor", affiliation: "Modibbo Adama University" },
-    { name: "Prof. Paul S. Yaduma", role: "Editor", affiliation: "ATBU, Bauchi" },
-    { name: "Prof. Ali A. Ali", role: "Editor", affiliation: "Fed. Univ. Agriculture Makurdi" },
-    { name: "Dr. Joseph Olorunmolu Oye", role: "Member", affiliation: "FCE(T) Potiskum" },
-    { name: "Dr. Ahmadu Bukar", role: "Member", affiliation: "FCE(T) Potiskum" },
-    { name: "Dr. Monday Usman", role: "Member", affiliation: "FCE(T) Potiskum" },
-    { name: "Dr. Ekaria Joseph", role: "Member", affiliation: "FCE(T) Potiskum" },
-    { name: "Dr. Babayo Shanga", role: "Member", affiliation: "FCE(T) Potiskum" },
-    { name: "Dr. (Mrs) Amina Hassan", role: "Member", affiliation: "FCE(T) Potiskum" },
-    { name: "Mrs. Rakiya Baba Zakariyya", role: "Member", affiliation: "FCE(T) Potiskum" },
-    { name: "Babayo Wakili", role: "Member", affiliation: "FCE(T) Potiskum" },
-    { name: "Benjamin Gbeyoron", role: "Member", affiliation: "FCE(T) Potiskum" },
-    { name: "Ahmed Maina", role: "Member", affiliation: "FCE(T) Potiskum" },
-    { name: "Dr. Abdulkadir A. Olatunji", role: "Secretary", affiliation: "FCE(T) Potiskum" },
+    {
+      name: "Dr. Mursali Mohammed Jaji",
+      role: "Chairman",
+      affiliation: "Federal College Education (Technical), Potiskum, Yobe State. Nigeria",
+      phone: "+2347035165583",
+      designation: "Chief Lecturer"
+    },
+    {
+      name: "Dr. Joseph Olorunmolu Oye",
+      role: "Member",
+      affiliation: "Federal College Education (Technical), Potiskum, Yobe State. Nigeria",
+      phone: "+2348037935506",
+      designation: "Chief Lecturer"
+    },
+    {
+      name: "Dr. Ahmadu Bukar",
+      role: "Member",
+      affiliation: "Federal College Education (Technical), Potiskum, Yobe State. Nigeria",
+      phone: "+2348032577688",
+      designation: "Principal Lecturer"
+    },
+    {
+      name: "Dr. Monday Usman",
+      role: "Member",
+      affiliation: "Federal College Education (Technical), Potiskum, Yobe State. Nigeria",
+      phone: "+2348065704224",
+      designation: "Chief Lecturer"
+    },
+    {
+      name: "Dr. Ekaria Joseph",
+      role: "Member",
+      affiliation: "Federal College Education (Technical), Potiskum, Yobe State. Nigeria",
+      phone: "+2348039652865",
+      designation: "Chief Lecturer"
+    },
+    {
+      name: "Dr. Babayo Shanga",
+      role: "Member",
+      affiliation: "Federal College Education (Technical), Potiskum, Yobe State. Nigeria",
+      phone: "+2348067246198",
+      designation: "Principal Lecturer"
+    },
+    {
+      name: "Dr. (Mrs) Amina Hassan",
+      role: "Member",
+      affiliation: "Federal College Education (Technical), Potiskum, Yobe State. Nigeria",
+      phone: "+2348035166425",
+      designation: "Principal Lecturer"
+    },
+    {
+      name: "Mrs. Rakiya Baba Zakariyya",
+      role: "Member",
+      affiliation: "Federal College Education (Technical), Potiskum, Yobe State. Nigeria",
+      phone: "+2348064862042",
+      designation: "Principal Lecturer"
+    },
+    {
+      name: "Babayo Wakili",
+      role: "Member",
+      affiliation: "Federal College Education (Technical), Potiskum, Yobe State. Nigeria",
+      phone: "+2348065455637",
+      designation: "Senior Lecturer"
+    },
+    {
+      name: "Benjamin Gbeyoron",
+      role: "Member",
+      affiliation: "Federal College Education (Technical), Potiskum, Yobe State. Nigeria",
+      phone: "+2347037700025",
+      designation: "Lecturer I"
+    },
+    {
+      name: "Ahmed Maina",
+      role: "Member",
+      affiliation: "Federal College Education (Technical), Potiskum, Yobe State. Nigeria",
+      phone: "+2348036025570",
+      designation: "Lecturer I"
+    },
+    {
+      name: "Dr. Abdulkadir Abdulkarim Olatunji",
+      role: "Secretary",
+      affiliation: "Federal College Education (Technical), Potiskum, Yobe State. Nigeria",
+      phone: "+2348162872840",
+      designation: "Lecturer I"
+    },
   ];
 
   return (
@@ -28,7 +95,7 @@ export default function AboutPage() {
       <section className="space-y-4 max-w-4xl">
         <h1 className="text-4xl font-bold tracking-tight">About JITTED</h1>
         <p className="text-lg text-slate-700 leading-relaxed">
-          The **Journal of Issues in Technical Teacher Education (JITTED)** is a reputable academic journal 
+          The <strong>Journal of Issues in Technical Teacher Education (JITTED)</strong> is a reputable academic journal 
           published by the Directorate of Research, Innovation and Development at the Federal College of 
           Education (Technical), Potiskum, Yobe State, Nigeria.
         </p>
@@ -54,8 +121,14 @@ export default function AboutPage() {
                   <p className="text-sm text-primary font-medium">{member.role}</p>
                 </div>
               </CardHeader>
-              <CardContent>
-                <p className="text-sm text-slate-500">{member.affiliation}</p>
+              <CardContent className="space-y-2">
+                <p className="text-sm text-slate-700 font-medium">{member.affiliation}</p>
+                {member.designation && (
+                   <p className="text-sm text-slate-500">Designation: {member.designation}</p>
+                )}
+                {member.phone && (
+                   <p className="text-sm text-slate-500">Mobile: {member.phone}</p>
+                )}
               </CardContent>
             </Card>
           ))}

@@ -51,10 +51,11 @@ export function Navbar() {
           {session ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                <Button variant="ghost" className="relative h-10 w-auto rounded-full flex items-center gap-2 px-3 hover:bg-slate-100">
+                  <span className="text-sm font-medium hidden md:block">{session.user?.name}</span>
                   <Avatar className="h-8 w-8">
                     <AvatarImage src={session.user?.image || ""} alt={session.user?.name || ""} />
-                    <AvatarFallback>{session.user?.name?.charAt(0).toUpperCase()}</AvatarFallback>
+                    <AvatarFallback className="bg-primary/10 text-primary">{session.user?.name?.charAt(0).toUpperCase()}</AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
@@ -80,6 +81,14 @@ export function Navbar() {
                     <span>Manage Profile</span>
                   </Link>
                 </DropdownMenuItem>
+                {(session.user?.role === "ADMIN" || session.user?.role === "EDITOR") && (
+                  <DropdownMenuItem asChild>
+                    <Link href="/dashboard/editor/manual-upload" className="cursor-pointer">
+                      <LayoutDashboard className="mr-2 h-4 w-4" />
+                      <span>Manual Upload</span>
+                    </Link>
+                  </DropdownMenuItem>
+                )}
                 {session.user?.role === "ADMIN" && (
                   <DropdownMenuItem asChild>
                     <Link href="/dashboard/admin/users" className="cursor-pointer">
@@ -100,7 +109,7 @@ export function Navbar() {
             </DropdownMenu>
           ) : (
             <Button asChild variant="default" size="sm">
-              <Link href="/login">Login / Submit</Link>
+              <Link href="/login">Login</Link>
             </Button>
           )}
         </nav>

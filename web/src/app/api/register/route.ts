@@ -12,8 +12,14 @@ const registerSchema = z.object({
 });
 
 export async function POST(req: Request) {
+  return NextResponse.json(
+    { message: "Registration is currently disabled." },
+    { status: 403 }
+  );
+  /*
   try {
     const body = await req.json();
+
     const { name, email, password, role, affiliation } = registerSchema.parse(body);
 
     const existingUser = await prisma.user.findUnique({
@@ -55,4 +61,5 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
+  */
 }

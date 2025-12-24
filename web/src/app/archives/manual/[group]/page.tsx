@@ -6,24 +6,30 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, FileText, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default async function PublicIssuePage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  const issue = await prisma.issue.findUnique({
-    where: { id, isPublished: true },
+export default async function ManualCollectionPage({ params }: { params: Promise<{ group: string }> }) {
+  const { group } = await params;
+  const collectionName = decodeURIComponent(group);
+
+  const submissions = await prisma.submission.findMany({
+    where: { 
+        manualIssueText: collectionName,
+        status: "PUBLISHED" 
+    },
+    orderBy: { title: "asc" },
     include: {
-      submissions: {
-        where: { status: "PUBLISHED" },
-        orderBy: { title: "asc" },
-        include: {
-          author: { select: { name: true, affiliation: true } },
-        },
-      },
+      author: { select: { name: true, affiliation: true } },
     },
   });
 
-  if (!issue) {
+  if (submissions.length === 0) {
     notFound();
   }
+
+  // Use the date of the most recent submission as the collection date
+  const latestDate = submissions.reduce((latest, sub) => {
+      const subDate = sub.publishedAt || sub.createdAt;
+      return subDate > latest ? subDate : latest;
+  }, new Date(0));
 
   return (
     <div className="container py-12 space-y-8 max-w-4xl mx-auto">
@@ -37,15 +43,17 @@ export default async function PublicIssuePage({ params }: { params: Promise<{ id
       <div className="space-y-4 border-b pb-8">
         <div className="flex items-center gap-4">
             <h1 className="text-3xl font-bold tracking-tight">
-            Volume {issue.volume}, Issue {issue.number}
+            {collectionName}
             </h1>
-            <Badge variant="secondary" className="text-lg">{issue.year}</Badge>
+            <Badge variant="secondary" className="text-lg">Collection</Badge>
         </div>
-        {issue.title && <h2 className="text-2xl text-primary font-medium">{issue.title}</h2>}
+        <p className="text-muted-foreground">
+            Last updated: {latestDate.toLocaleDateString()}
+        </p>
       </div>
 
       <div className="space-y-6">
-        {issue.submissions.map((article) => (
+        {submissions.map((article) => (
           <Card key={article.id} className="group hover:border-primary/50 transition-colors">
             <CardContent className="p-6">
               <div className="flex flex-col md:flex-row gap-4 justify-between items-start">
@@ -56,9 +64,11 @@ export default async function PublicIssuePage({ params }: { params: Promise<{ id
                     </h3>
                   </Link>
                   <div className="text-sm text-muted-foreground">
-                    <span className="font-medium text-foreground">{article.author.name}</span>
-                    {article.author.affiliation && (
-                        <span> • {article.author.affiliation}</span>
+                    <span className="font-medium text-foreground">
+                        {article.displayAuthor || article.author.name}
+                    </span>
+                    {(article.displayAffiliation || article.author.affiliation) && (
+                        <span> • {article.displayAffiliation || article.author.affiliation}</span>
                     )}
                   </div>
                   <p className="text-muted-foreground line-clamp-2">
@@ -85,11 +95,6 @@ export default async function PublicIssuePage({ params }: { params: Promise<{ id
             </CardContent>
           </Card>
         ))}
-        {issue.submissions.length === 0 && (
-            <p className="text-muted-foreground text-center py-8">
-                No articles found in this issue.
-            </p>
-        )}
       </div>
     </div>
   );

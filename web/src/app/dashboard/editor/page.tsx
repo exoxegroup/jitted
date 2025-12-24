@@ -71,6 +71,11 @@ export default async function EditorDashboard() {
           <h1 className="text-3xl font-bold tracking-tight">Editorial Dashboard</h1>
           <p className="text-muted-foreground">Manage submissions and review process.</p>
         </div>
+        <Button asChild>
+            <Link href="/dashboard/editor/manual-upload">
+                Manual Upload
+            </Link>
+        </Button>
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">

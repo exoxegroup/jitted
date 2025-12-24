@@ -95,6 +95,15 @@ model Submission {
   author      User             @relation(fields: [authorId], references: [id])
   
   coAuthors   String?          // JSON string or simple text for now
+  displayAuthor String?        // For manual uploads (overrides author.name)
+  displayAffiliation String?   // For manual uploads
+  publishedAt DateTime?        // For backdating or manual publication date
+  
+  // New manual upload fields
+  manualIssueText String?      @db.Text // Manual issue description (replacing relation)
+  references      String?      @db.Text // Bullet points of references
+  otherAuthors    Json?        // [{name, affiliation}]
+  manualKeywords  String[]     // Array of keywords
   
   issueId     String?
   issue       Issue?           @relation(fields: [issueId], references: [id])

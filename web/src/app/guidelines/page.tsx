@@ -25,23 +25,23 @@ export default function GuidelinesPage() {
             <ul className="space-y-3 text-slate-700">
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0 mt-0.5" />
-                <span>**Title Page**: Must include article title, author(s) name, affiliation, email, and phone number.</span>
+                <span><strong>Title Page:</strong> Must include article title, author(s) name, affiliation, email, and phone number.</span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0 mt-0.5" />
-                <span>**Length**: Maximum of 15 pages (A4) or 12 pages (Foolscap), including references.</span>
+                <span><strong>Length:</strong> Maximum of 15 pages (A4) or 12 pages (Foolscap), including references.</span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0 mt-0.5" />
-                <span>**Typography**: Times New Roman, 12pt font size.</span>
+                <span><strong>Typography:</strong> Times New Roman, 12pt font size.</span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0 mt-0.5" />
-                <span>**Spacing**: 1.5 line spacing.</span>
+                <span><strong>Spacing:</strong> 1.5 line spacing.</span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0 mt-0.5" />
-                <span>**Abstract**: Maximum of 250 words on a separate sheet.</span>
+                <span><strong>Abstract:</strong> Maximum of 250 words on a separate sheet.</span>
               </li>
             </ul>
           </section>
