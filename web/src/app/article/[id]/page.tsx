@@ -92,7 +92,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
                     // Combine main author and other authors
                     const allAuthors = [
                         {
-                            name: article.displayAuthor || article.author.name,
+                            name: article.displayAuthor || article.author.name || "Unknown Author",
                             affiliation: (article.displayAffiliation || article.author.affiliation || "").trim()
                         },
                         ...otherAuthors.map(a => ({
