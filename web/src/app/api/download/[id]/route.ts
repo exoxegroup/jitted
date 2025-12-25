@@ -40,14 +40,9 @@ export async function GET(
       if (matches) {
         const [_, resourceType, type, publicIdWithExt] = matches;
         
-        // Determine public_id (remove extension if not raw)
-        let publicId = publicIdWithExt;
-        if (resourceType !== "raw") {
-            const lastDotIndex = publicId.lastIndexOf(".");
-            if (lastDotIndex !== -1) {
-                publicId = publicId.substring(0, lastDotIndex);
-            }
-        }
+        // Use the full public ID with extension to ensure the format is preserved
+        // This is critical for PDFs stored as 'image' resource type
+        const publicId = publicIdWithExt;
 
         // Generate signed URL
         // We use type 'authenticated' to force a signature check, or 'upload' with sign_url.
