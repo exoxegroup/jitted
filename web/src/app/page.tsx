@@ -39,11 +39,11 @@ export default async function Home() {
       <section className="relative py-12 md:py-24 bg-[#e8f4f1] text-slate-900 overflow-hidden">
         {/* Background Pattern - subtle geometric or gradient if needed, keeping it clean for now */}
         
-        <div className="container relative z-10 flex flex-col md:flex-row items-center gap-12 animate__animated animate__fadeInUp">
+        <div className="container relative z-10 flex flex-col md:flex-row items-center md:items-start gap-12 animate__animated animate__fadeInUp">
           
           {/* Left Column: Text and CTAs */}
           <div className="flex-1 text-center md:text-left space-y-8">
-            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
               Journal of Issues in <span className="text-primary">Technical Teacher Education</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-700 font-medium leading-relaxed">
