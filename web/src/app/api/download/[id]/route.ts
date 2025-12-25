@@ -29,9 +29,9 @@ export async function GET(
 
     // Check if it's a Cloudinary URL
     if (fileUrl.includes("cloudinary.com")) {
-      // Revert to direct redirect since signed URL generation is proving brittle without correct context
-      // If the file is public (which new ones should be), this will work.
-      // If private, it might fail, but the previous signed URL logic was also failing (404).
+      // Direct redirect for all Cloudinary URLs.
+      // We are now forcing 'raw' resource type and 'public' access for new uploads, 
+      // which simplifies retrieval and avoids the signature/format issues of 'image' type PDFs.
       return NextResponse.redirect(fileUrl);
     }
 

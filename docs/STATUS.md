@@ -4,25 +4,25 @@
 **Date**: 2025-12-25
 
 ## Overview
-The application is in the final verification stage. We have switched the storage strategy from Cloudinary to **Local Disk Storage** to ensure reliability and simplify the deployment on Render.
+The application is in the final verification stage. We have reverted the storage strategy to **Cloudinary** but optimized the configuration to ensure PDF accessibility without requiring paid Render disk storage.
 
 **Key Updates (2025-12-25)**:
-- **Storage Migration**: Switched from Cloudinary to Local File System for uploads.
-- **Upload Route**: Updated to save files to `uploads/` directory.
-- **Download Route**: Updated to serve files from local disk (via `/api/uploads/[filename]`).
-- **Cloudinary Fallback**: Reverted to direct redirect for existing Cloudinary files.
+- **Storage Strategy**: Reverted to Cloudinary to avoid paid Render disk costs.
+- **Upload Optimization**: Enforcing `resource_type: "raw"` for all PDFs to prevent them being treated as images (which caused 404s and strict access issues).
+- **Download Route**: Updated to direct redirect for Cloudinary URLs (since "raw" resources don't need complex signing).
+- **Access Mode**: Explicitly setting `access_mode: "public"` for all uploads.
 
 ## Completed Tasks
 ### Phase 1-6
 - [x] All core functionalities.
 
 ### Phase 7 (Polish & Launch)
-- [x] Cloudinary Integration (Replaced with Local Storage).
+- [x] Cloudinary Integration (Optimized for PDFs).
 - [x] Admin-Only Mode (Registration Disabled).
 - [x] Manual Publication Workflow (Enhanced).
 - [x] Dashboard Quick Actions.
 - [x] Archives Page Update (Support for Manual Collections).
-- [x] Production Download Fix (Local Storage).
+- [x] Production Download Fix (Cloudinary Raw Mode).
 
 ## Active Tasks
 - [ ] Final End-to-End Verification of Manual Uploads.
@@ -31,6 +31,6 @@ The application is in the final verification stage. We have switched the storage
 - [x] UI/UX Polish (Author Affiliation Grouping).
 
 ## Security Notes
-- **Storage**: Files are stored on the local disk (or mounted persistent disk on Render). Served via a secure API route that checks for path traversal.
+- **Storage**: Files are stored in Cloudinary. New PDFs are stored as "raw" resources with public access.
 - **Input Validation**: `manual-upload.ts` strictly validates all new fields (Zod).
 - **Access Control**: Manual upload strictly limited to `ADMIN` and `EDITOR` roles.
