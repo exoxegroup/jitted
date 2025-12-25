@@ -60,11 +60,6 @@ export function ManualUploadForm({ issues }: { issues: any[] }) {
     name: "otherAuthors",
   });
 
-  const addLog = (message: string) => {
-    setDebugLog(prev => [...prev, `${new Date().toLocaleTimeString()}: ${message}`]);
-    console.log(message);
-  };
-
   async function onSubmit(data: z.infer<typeof formSchema>) {
     if (!file) {
       toast.error("Please upload a PDF file.");
