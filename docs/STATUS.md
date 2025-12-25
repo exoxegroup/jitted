@@ -26,7 +26,8 @@ The application is in the final verification stage. We have successfully impleme
 
 ## Active Tasks
 - [ ] Final End-to-End Verification of Manual Uploads.
-- [ ] Production Deployment (Fixing Seed Configuration).
+- [x] Production Deployment (Fixing Seed Configuration).
+- [x] Content Updates (Footer text, Contact page map removed).
 
 ## Security Notes
 - **Storage**: Files are stored securely in Cloudinary.

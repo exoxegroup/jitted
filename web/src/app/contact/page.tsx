@@ -87,13 +87,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Map Placeholder */}
-          <div className="aspect-video w-full rounded-lg bg-slate-100 border flex items-center justify-center text-slate-400">
-             <span className="flex items-center gap-2">
-               <MapPin className="h-4 w-4" />
-               Google Maps Embed Placeholder
-             </span>
-          </div>
+          {/* Map removed as requested */}
         </div>
       </div>
     </div>
