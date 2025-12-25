@@ -31,33 +31,54 @@ export async function GET(
     if (fileUrl.includes("cloudinary.com")) {
       // Extract details from URL
       // Format: https://res.cloudinary.com/<cloud>/<resource_type>/<type>/v<ver>/<public_id>.<ext>
-      // Or: https://res.cloudinary.com/<cloud>/<resource_type>/<type>/<public_id>.<ext>
-      
-      // Regex to capture: resource_type, type, and the rest (public_id + ext)
-      // Example match: .../raw/upload/v12345/folder/file.pdf
       const matches = fileUrl.match(/cloudinary\.com\/[^/]+\/([^/]+)\/([^/]+)\/(?:v\d+\/)?(.+)$/);
 
       if (matches) {
         const [_, resourceType, type, publicIdWithExt] = matches;
         
-        // Use the full public ID with extension to ensure the format is preserved
-        // This is critical for PDFs stored as 'image' resource type
-        const publicId = publicIdWithExt;
-
-        // Generate signed URL
-        // We use type 'authenticated' to force a signature check, or 'upload' with sign_url.
-        // If the original file is 'upload' (public) but restricted, a signed URL usually bypasses restrictions.
-        // However, we must match the original 'type' (e.g. 'upload') for the signature to be valid for that resource.
+        // Strategy: Try to resolve the resource using Cloudinary Admin API to get the exact public_id and type
+        // This handles cases where the URL format might be ambiguous (e.g. PDF as image vs raw)
         
-        const signedUrl = cloudinary.url(publicId, {
-          resource_type: resourceType,
-          type: type, 
-          sign_url: true,
-          expires_at: Math.floor(Date.now() / 1000) + 3600, // 1 hour expiration
-          secure: true,
-        });
+        let validPublicId = publicIdWithExt;
+        let validResourceType = resourceType;
+        let validFormat = "";
 
-        return NextResponse.redirect(signedUrl);
+        // Try to strip extension for the API check if it looks like an image/pdf
+        const lastDotIndex = publicIdWithExt.lastIndexOf(".");
+        const publicIdNoExt = lastDotIndex !== -1 ? publicIdWithExt.substring(0, lastDotIndex) : publicIdWithExt;
+        const ext = lastDotIndex !== -1 ? publicIdWithExt.substring(lastDotIndex + 1) : "";
+
+        try {
+            // Attempt 1: Check as is (or without extension for image types)
+            // If resourceType is 'image', public_id usually doesn't have extension in the DB
+            let searchId = resourceType === 'raw' ? publicIdWithExt : publicIdNoExt;
+            
+            // We can't easily use the Admin API in high-traffic (rate limits), but for a download link it's acceptable fallback
+            // However, to be faster, let's try to generate a signed URL that works for "Authenticated" resources.
+            
+            // If the original URL was "image/upload", it's likely an image-type resource.
+            // For PDFs stored as images, we often need to append .pdf to the public_id in the URL, but NOT in the signature if it's not part of the ID.
+            
+            // Let's generate a signed URL using the Cloudinary SDK's standard method
+            // The SDK handles the intricacies of signature generation if we provide the correct public_id.
+            
+            // If it's an image/pdf, we usually want the extension in the final URL.
+            const format = (resourceType === 'image' && ext) ? ext : undefined;
+            
+            const signedUrl = cloudinary.url(publicIdNoExt, {
+                resource_type: resourceType,
+                type: type,
+                format: format,
+                sign_url: true,
+                expires_at: Math.floor(Date.now() / 1000) + 3600,
+                secure: true,
+            });
+
+            return NextResponse.redirect(signedUrl);
+
+        } catch (e) {
+            console.error("Error generating signed URL:", e);
+        }
       }
     }
 
