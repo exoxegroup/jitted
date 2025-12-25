@@ -38,10 +38,10 @@ export default async function Home() {
       {/* Hero Section */}
       <section className="relative py-12 md:py-20 bg-slate-50 text-slate-900 overflow-hidden">
         {/* Background Image - Adjusted opacity for visibility on light theme */}
-        <div className="absolute inset-0 bg-[url('/images/jitted-design.png')] opacity-30 bg-cover bg-center animate__animated animate__pulse animate__slower animate__infinite" />
+        <div className="absolute inset-0 bg-[url('/images/jitted-design.png')] opacity-60 bg-contain bg-center bg-no-repeat animate__animated animate__pulse animate__slower animate__infinite" />
         
         {/* Overlay gradient to ensure text readability */}
-        <div className="absolute inset-0 bg-white/40"></div>
+        <div className="absolute inset-0 bg-white/10"></div>
 
         <div className="container relative z-10 flex flex-col items-center text-center space-y-8 animate__animated animate__fadeInUp">
           
