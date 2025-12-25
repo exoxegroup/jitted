@@ -88,6 +88,7 @@ export function ManualUploadForm({ issues }: { issues: any[] }) {
       // 2. Submit metadata + file URL
       const result = await manualUploadAction({
         ...data,
+        manualKeywords: data.manualKeywords ? data.manualKeywords.split(',').map(k => k.trim()).filter(k => k.length > 0) : [],
         fileUrl: url,
       });
 
