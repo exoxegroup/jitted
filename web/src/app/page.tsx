@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, FileText, Users, ArrowRight } from "lucide-react";
+import { BookOpen, FileText, Users, ArrowRight, User } from "lucide-react";
 import prisma from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
