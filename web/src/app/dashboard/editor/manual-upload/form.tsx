@@ -60,30 +60,21 @@ export function ManualUploadForm({ issues }: { issues: any[] }) {
     name: "otherAuthors",
   });
 
-  const [debugLog, setDebugLog] = useState<string[]>([]);
-
   const addLog = (message: string) => {
     setDebugLog(prev => [...prev, `${new Date().toLocaleTimeString()}: ${message}`]);
     console.log(message);
   };
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    setDebugLog([]); // Clear previous logs
-    addLog("Starting submission process...");
-    
+  async function onSubmit(data: z.infer<typeof formSchema>) {
     if (!file) {
-      addLog("Error: No file selected");
-      toast.error("Please upload a PDF file");
+      toast.error("Please upload a PDF file.");
       return;
     }
 
-    setUploading(true);
-    const toastId = toast.loading("Uploading publication...");
-    addLog(`File selected: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`);
-
     try {
-      // 1. Upload File
-      addLog("Step 1: Uploading file to API...");
+      setUploading(true);
+
+      // 1. Upload file to Cloudinary
       const formData = new FormData();
       formData.append("file", file);
       
@@ -92,57 +83,33 @@ export function ManualUploadForm({ issues }: { issues: any[] }) {
         body: formData,
       });
 
-      addLog(`Upload API Response Status: ${uploadRes.status}`);
-
       if (!uploadRes.ok) {
         const errorText = await uploadRes.text();
-        addLog(`Upload API Error Body: ${errorText}`);
-        let errorMessage = "Upload failed";
-        try {
-            const errorData = JSON.parse(errorText);
-            errorMessage = errorData.message || errorMessage;
-        } catch (e) {
-            // ignore json parse error
-        }
-        throw new Error(errorMessage);
+        throw new Error(`Upload failed: ${errorText}`);
       }
+
+      const { url } = await uploadRes.json();
       
-      const uploadData = await uploadRes.json();
-      addLog(`File uploaded successfully. URL: ${uploadData.url}`);
-      const { url } = uploadData;
-
-      // 2. Prepare Data (split keywords)
-      addLog("Step 2: Preparing submission data...");
-      const keywordsArray = values.manualKeywords 
-        ? values.manualKeywords.split(',').map(k => k.trim()).filter(k => k.length > 0)
-        : [];
-
-      // 3. Submit Data
-      addLog("Step 3: Submitting metadata to server action...");
+      // 2. Submit metadata + file URL
       const result = await manualUploadAction({
-        ...values,
-        manualKeywords: keywordsArray,
+        ...data,
         fileUrl: url,
-        issueId: undefined, // Ensuring we use the manual text
       });
 
       if (result.error) {
-        addLog(`Server Action Error: ${result.error}`);
+        toast.error(result.error);
+        // Show validation issues if any
         if (result.issues) {
-             addLog(`Validation Issues: ${JSON.stringify(result.issues)}`);
+            console.error(result.issues);
         }
-        toast.error(result.error, { id: toastId });
       } else {
-        addLog("Success: Publication created!");
-        toast.success("Publication created successfully", { id: toastId });
+        toast.success("Article published manually!");
         router.push("/dashboard/editor");
         router.refresh();
       }
     } catch (error) {
-      const msg = error instanceof Error ? error.message : "Unknown error";
-      addLog(`CRITICAL ERROR: ${msg}`);
       console.error(error);
-      toast.error(msg, { id: toastId });
+      toast.error(error instanceof Error ? error.message : "Something went wrong");
     } finally {
       setUploading(false);
     }
@@ -366,15 +333,6 @@ export function ManualUploadForm({ issues }: { issues: any[] }) {
                 "Publish Manually"
             )}
         </Button>
-
-        {debugLog.length > 0 && (
-          <div className="mt-8 p-4 bg-slate-900 text-green-400 rounded-md font-mono text-xs overflow-auto max-h-[300px]">
-              <h4 className="font-bold border-b border-green-800 mb-2 pb-1 text-white">Debug Log</h4>
-              {debugLog.map((log, i) => (
-                  <div key={i} className="mb-1 border-b border-slate-800 pb-1 last:border-0">{log}</div>
-              ))}
-          </div>
-        )}
       </form>
     </Form>
   );
