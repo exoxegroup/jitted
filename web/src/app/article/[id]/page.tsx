@@ -90,7 +90,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
             <div className="flex flex-col gap-4 text-sm text-muted-foreground mt-6">
                 {(() => {
                     // Combine main author and other authors
-                    const allAuthors = [
+                    const allAuthors: {name: string, affiliation: string}[] = [
                         {
                             name: article.displayAuthor || article.author.name || "Unknown Author",
                             affiliation: (article.displayAffiliation || article.author.affiliation || "").trim()
