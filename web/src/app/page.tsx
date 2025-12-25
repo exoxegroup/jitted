@@ -43,7 +43,7 @@ export default async function Home() {
           
           {/* Left Column: Text and CTAs */}
           <div className="flex-1 text-center md:text-left space-y-8">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
               Journal of Issues in <span className="text-primary">Technical Teacher Education</span>
             </h1>
             <p className="text-lg md:text-xl text-slate-700 font-medium leading-relaxed">
