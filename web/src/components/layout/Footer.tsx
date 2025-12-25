@@ -43,7 +43,7 @@ export function Footer() {
                 />
               </div>
               <p className="text-xs text-slate-500">
-                Printed in Nigeria with support from the Tertiary Education Trust Fund (TETFund).
+                With support from the Tertiary Education Trust Fund (TETFund).
               </p>
             </div>
           </div>
