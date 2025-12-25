@@ -53,7 +53,7 @@ export default async function Home() {
            </p>
 
           {/* Call for Papers Card (Moved Up) */}
-          <div className="w-full max-w-4xl bg-white/80 backdrop-blur-md border border-slate-200 rounded-xl p-8 mb-8 text-left grid md:grid-cols-2 gap-8 items-center shadow-xl hover:shadow-2xl transition-all">
+          <div className="w-full max-w-4xl bg-white/30 backdrop-blur-md border border-slate-200 rounded-xl p-8 mb-8 text-left grid md:grid-cols-2 gap-8 items-center shadow-xl hover:shadow-2xl transition-all">
             <div className="space-y-4">
               <h2 className="text-2xl md:text-3xl font-bold text-slate-900">Call for Papers: Vol. 4 No. 1</h2>
               <p className="text-slate-600">
@@ -61,7 +61,7 @@ export default async function Home() {
                 Focus areas include advancements in technical education, innovative teaching methods, and vocational training.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
-                 <div className="inline-flex items-center text-green-600 font-medium bg-green-50 px-3 py-1 rounded-full border border-green-200">
+                 <div className="inline-flex items-center text-green-600 font-medium bg-green-50/80 px-3 py-1 rounded-full border border-green-200">
                     <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
                     Now Accepting Submissions
                  </div>
@@ -72,7 +72,7 @@ export default async function Home() {
             </div>
             
             {/* Latest Issue Preview */}
-            <div className="bg-slate-50 rounded-lg p-6 border border-slate-200 shadow-inner">
+            <div className="bg-white/40 rounded-lg p-6 border border-slate-200 shadow-inner backdrop-blur-sm">
                 <div className="flex justify-between items-center mb-4 border-b border-slate-200 pb-2">
                     <h3 className="font-semibold text-slate-900">Latest Issue</h3>
                     <span className="text-xs text-slate-500 font-medium">{issueLabel}</span>
