@@ -28,6 +28,7 @@ The application is in the final verification stage. We have successfully impleme
 - [ ] Final End-to-End Verification of Manual Uploads.
 - [x] Production Deployment (Fixing Seed Configuration).
 - [x] Content Updates (Footer text, Contact page map removed).
+- [x] UI/UX Polish (Author Affiliation Grouping).
 
 ## Security Notes
 - **Storage**: Files are stored securely in Cloudinary.

@@ -87,34 +87,67 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
                 </div>
             )}
 
-            <div className="flex flex-col gap-2 text-sm text-muted-foreground mt-4">
-                {/* Main Author */}
-                <div className="flex items-center gap-2 font-medium text-foreground">
-                    <User className="h-4 w-4" />
-                    <span>{article.displayAuthor || article.author.name}</span>
-                </div>
-                {(article.displayAffiliation || article.author.affiliation) && (
-                    <div className="ml-6 text-slate-600">
-                        {article.displayAffiliation || article.author.affiliation}
-                    </div>
-                )}
+            <div className="flex flex-col gap-4 text-sm text-muted-foreground mt-6">
+                {(() => {
+                    // Combine main author and other authors
+                    const allAuthors = [
+                        {
+                            name: article.displayAuthor || article.author.name,
+                            affiliation: (article.displayAffiliation || article.author.affiliation || "").trim()
+                        },
+                        ...otherAuthors.map(a => ({
+                            name: a.name,
+                            affiliation: (a.affiliation || "").trim()
+                        }))
+                    ];
 
-                {/* Other Authors */}
-                {otherAuthors.length > 0 && (
-                    <div className="mt-2 space-y-2 ml-6 border-l-2 pl-4 border-slate-200">
-                        {otherAuthors.map((author, idx) => (
-                            <div key={idx} className="mb-2">
-                                <div className="font-medium text-foreground">{author.name}</div>
-                                <div className="text-slate-600">{author.affiliation}</div>
+                    // Group by affiliation
+                    const groups: { affiliation: string, authors: string[] }[] = [];
+                    const affiliationIndex = new Map<string, number>();
+
+                    allAuthors.forEach(author => {
+                        const aff = author.affiliation;
+                        // If affiliation is empty, treat as unique to avoid grouping unrelated people under "no affiliation"
+                        // OR group them if that's desired. Usually empty affiliation means unknown.
+                        // Let's treat empty affiliation as a group for now to be consistent, but maybe unique is safer?
+                        // If I treat it as a key "", they will group. 
+                        // Let's assume grouping is fine for empty too, or maybe we want to keep them separate?
+                        // If 2 authors have no affiliation, grouping them as "Name 1, Name 2" with no affiliation text below is fine.
+                        
+                        if (aff && affiliationIndex.has(aff)) {
+                            const index = affiliationIndex.get(aff)!;
+                            groups[index].authors.push(author.name);
+                        } else if (aff) {
+                            groups.push({ affiliation: aff, authors: [author.name] });
+                            affiliationIndex.set(aff, groups.length - 1);
+                        } else {
+                            // No affiliation - keep separate or group?
+                            // Let's keep separate to be safe, as "No Affiliation" isn't a shared property usually.
+                            // But wait, if they are separate, they just show up as names.
+                            // Let's just add them as a new group without recording in index (so they don't merge)
+                            groups.push({ affiliation: "", authors: [author.name] });
+                        }
+                    });
+
+                    return groups.map((group, idx) => (
+                        <div key={idx} className="flex flex-col">
+                            <div className="flex items-start gap-2 font-medium text-foreground">
+                                <User className="h-4 w-4 shrink-0 mt-1" />
+                                <span>{group.authors.join(", ")}</span>
                             </div>
-                        ))}
-                    </div>
-                )}
+                            {group.affiliation && (
+                                <div className="ml-6 text-slate-600">
+                                    {group.affiliation}
+                                </div>
+                            )}
+                        </div>
+                    ));
+                })()}
+            </div>
 
-                <div className="flex items-center gap-2 mt-2">
-                    <Calendar className="h-4 w-4" />
-                    <span>Published: {new Date(article.publishedAt || article.updatedAt).toLocaleDateString()}</span>
-                </div>
+            <div className="flex items-center gap-2 mt-2 text-sm text-muted-foreground">
+                <Calendar className="h-4 w-4" />
+                <span>Published: {new Date(article.publishedAt || article.updatedAt).toLocaleDateString()}</span>
             </div>
         </header>
 
