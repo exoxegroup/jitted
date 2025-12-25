@@ -49,6 +49,7 @@ export async function POST(req: Request) {
           // For raw files, we might want to preserve the filename, but random ID is safer for uniqueness
           use_filename: true, 
           unique_filename: true,
+          access_mode: "public",
         },
         (error, result) => {
           if (error) reject(error);

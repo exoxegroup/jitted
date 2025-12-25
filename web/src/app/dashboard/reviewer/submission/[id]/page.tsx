@@ -95,7 +95,7 @@ export default async function ReviewerSubmissionPage({
                         </div>
                       </div>
                       <Button variant="outline" size="sm" asChild>
-                        <a href={submission.fileUrl} target="_blank" rel="noopener noreferrer">
+                        <a href={`/api/download/${submission.id}`} target="_blank" rel="noopener noreferrer">
                           <Download className="h-4 w-4 mr-2" />
                           Download
                         </a>

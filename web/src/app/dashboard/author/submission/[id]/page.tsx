@@ -93,7 +93,7 @@ export default async function AuthorSubmissionPage({
                       </div>
                     </div>
                     <Button variant="outline" size="sm" asChild>
-                      <a href={submission.fileUrl} target="_blank" rel="noopener noreferrer">
+                      <a href={`/api/download/${submission.id}`} target="_blank" rel="noopener noreferrer">
                         Download
                       </a>
                     </Button>

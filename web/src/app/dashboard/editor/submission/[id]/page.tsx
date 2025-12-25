@@ -114,7 +114,7 @@ export default async function SubmissionDetailPage({
                 </div>
                 {submission.fileUrl ? (
                   <Button variant="outline" asChild>
-                    <a href={submission.fileUrl} target="_blank" rel="noopener noreferrer">
+                    <a href={`/api/download/${submission.id}`} target="_blank" rel="noopener noreferrer">
                       <Download className="mr-2 h-4 w-4" />
                       Download
                     </a>

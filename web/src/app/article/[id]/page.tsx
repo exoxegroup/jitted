@@ -203,7 +203,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
                     <h3 className="font-bold">Download</h3>
                     {article.fileUrl ? (
                         <Button className="w-full" size="lg" asChild>
-                            <a href={article.fileUrl} target="_blank" rel="noopener noreferrer">
+                            <a href={`/api/download/${article.id}`} target="_blank" rel="noopener noreferrer">
                                 <Download className="mr-2 h-4 w-4" />
                                 Download PDF
                             </a>
