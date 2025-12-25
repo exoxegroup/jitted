@@ -122,7 +122,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
             <div className="md:col-span-2 space-y-8">
                 <section>
                     <h2 className="text-xl font-bold mb-4">Abstract</h2>
-                    <p className="text-lg leading-relaxed text-muted-foreground whitespace-pre-wrap">
+                    <p className="text-lg leading-relaxed text-muted-foreground whitespace-pre-wrap text-justify">
                         {article.abstract}
                     </p>
                 </section>
@@ -152,12 +152,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
                 {article.references && (
                     <section>
                         <h2 className="text-xl font-bold mb-4">References</h2>
-                        <div className="text-sm text-slate-600 leading-relaxed whitespace-pre-wrap pl-4 border-l-2 border-slate-100">
-                             <ul className="list-disc list-outside ml-4 space-y-2">
+                        <div className="text-sm text-slate-600 leading-relaxed pl-4 border-l-2 border-slate-100">
+                             <div className="space-y-2">
                                 {article.references.split('\n').filter(r => r.trim().length > 0).map((ref, i) => (
-                                    <li key={i}>{ref}</li>
+                                    <p key={i} className="pl-8 -indent-8 text-justify">
+                                        {ref}
+                                    </p>
                                 ))}
-                            </ul>
+                            </div>
                         </div>
                     </section>
                 )}
