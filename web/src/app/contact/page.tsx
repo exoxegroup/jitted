@@ -87,12 +87,19 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Map Placeholder */}
-          <div className="aspect-video w-full rounded-lg bg-slate-100 border flex items-center justify-center text-slate-400">
-             <span className="flex items-center gap-2">
-               <MapPin className="h-4 w-4" />
-               Google Maps Embed Placeholder
-             </span>
+          {/* Map */}
+          <div className="aspect-video w-full rounded-lg overflow-hidden border bg-slate-100">
+            <iframe
+              width="100%"
+              height="100%"
+              id="gmap_canvas"
+              src="https://maps.google.com/maps?q=Federal%20College%20of%20Education%20(Technical)%20Potiskum&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              frameBorder="0"
+              scrolling="no"
+              marginHeight={0}
+              marginWidth={0}
+              title="Google Map"
+            ></iframe>
           </div>
         </div>
       </div>
